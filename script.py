@@ -11,7 +11,14 @@ def patch_blarc(aspect_ratio, HUD_pos, unpacked_folder, cutscene_zoomed):
     file_paths = {}
 
     layout_map = {
-                    # 'Throbber': ['A_Save_00'],
+                    'Boot': ['L_WonderFlowerMorphing'],
+                    'CourseIn': ['S_CourseName', 'S_All', 'N_Contents', 'L_BadgeReccomend'],
+                    'GameDisplayOverlay': ['P_FrameBuffer', 'T_Overlay', 'P_CommentIcon', 'N_MMP'],
+                    'GameDisplay': ['N_OverlapArea00', 'N_OverlapArea01', 'N_Cap', 'P_CapUse', 'A_ItemStock',
+                                    'N_BigRandomCoin00', 'L_WomderTipSet', 'N_KillCount'],
+                    'GameDisplayTimer': ['N_OverlapArea', 'N_BestScore', 'N_Cap', 'P_CapUse'],
+                    'Title': ['T_Version', 'N_PressStart', 'N_Logo'],
+                    'MainMenu': ['N_Header', 'N_Footer', 'A_Btn', 'L_SaveBtn', 'L_TitleBtn', 'N_BtnB'],
                 }
 
     def patch_ui_layouts(direction):
@@ -114,7 +121,7 @@ def patch_blarc(aspect_ratio, HUD_pos, unpacked_folder, cutscene_zoomed):
             
     blyt_folder = os.path.abspath(os.path.join(unpacked_folder))
     
-    do_not_scale_rootpane = []
+    do_not_scale_rootpane = ['CmnOnUIBlurBg', "TitleBlurBg"]
    
     rootpane_by_y = []
 
@@ -166,7 +173,28 @@ def patch_blarc(aspect_ratio, HUD_pos, unpacked_folder, cutscene_zoomed):
                 patch_blyt(name, 'RootPane', 'scale_x', 1)
 
         
-        # patch_blyt('ActorSelect', 'P_Pattern_03', 'scale_x', 1/s1)
+                
+        patch_blyt('GameOver', 'P_BG', 'scale_x', 1/s1)
+        patch_blyt('GameOver', 'P_BG', 'scale_y', 1/s1)
+
+        patch_blyt('Boot', 'P_BG', 'scale_x', 1/s1)
+        patch_blyt('Boot', 'P_BG', 'scale_y', 1/s1)
+
+        patch_blyt('CourseIn', 'N_BG', 'scale_x', 1/s1)
+        patch_blyt('CourseIn', 'N_BG', 'scale_y', 1/s1)
+
+        patch_blyt('CmnLobbyBG', 'N_BG', 'scale_x', 1/s1)
+        patch_blyt('CmnLobbyBG', 'N_BG', 'scale_y', 1/s1)
+
+        patch_blyt('Title', 'N_All', 'scale_x', 1/s1)
+        patch_blyt('Title', 'N_All', 'scale_y', 1/s1)
+
+        patch_blyt('MainMenu', 'P_Header', 'scale_x', 1/s1)
+        patch_blyt('MainMenu', 'P_Header_00', 'scale_x', 1/s1)
+
+        patch_blyt('MainMenu', 'P_Footer', 'scale_x', 1/s1)
+        patch_blyt('MainMenu', 'P_Footer_00', 'scale_x', 1/s1)
+
 
         if HUD_pos == 'corner':
             print("Shifitng elements for corner HUD")
