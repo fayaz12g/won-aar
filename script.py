@@ -32,7 +32,7 @@ def patch_blarc(aspect_ratio, HUD_pos, unpacked_folder, cutscene_zoomed):
             paths = file_paths.get(modified_name, [])
             
             if not paths:
-                default_path = os.path.join(unpacked_folder, "Layout", f"{filename}.bflyt")
+                default_path = os.path.join(unpacked_folder, "Layout", f'{filename}.Nin_NX_NVN', 'blyt', f"{filename}.bflyt")
                 paths.append(default_path)
             
             for full_path_of_file in paths:
@@ -80,7 +80,7 @@ def patch_blarc(aspect_ratio, HUD_pos, unpacked_folder, cutscene_zoomed):
         paths = file_paths.get(modified_name, [])
         if not paths:
             # If no paths are found, create a default path and add it to the list
-            default_path = os.path.join(unpacked_folder, "region_common", "ui", "GameMain", "blyt", f"{filename}.bflyt")
+            default_path = os.path.join(unpacked_folder, "Layout", f'{filename}.Nin_NX_NVN', 'blyt', f"{filename}.bflyt")
             paths.append(default_path)
         
         for full_path_of_file in paths:
