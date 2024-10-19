@@ -41,12 +41,12 @@ from video import *
 tool_version = "1.0.0"
 
 root = customtkinter.CTk()
-root.title(f"Fayaz's Settings {tool_version} for Animal Crossing New Horizons")
+root.title(f"Fayaz's Settings {tool_version} for Super Mario Wonder")
 root.geometry("540x760")
 
 customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("blue")  
-windowtitle = customtkinter.CTkLabel(master=root, font=(CTkFont, 20), text="Fayaz's Animal Crossing New Horizons Utility {tool_version}")
+windowtitle = customtkinter.CTkLabel(master=root, font=(CTkFont, 20), text="Fayaz's Super Mario Wonder Utility {tool_version}")
 
 ###############################################
 ###########    GLOBAL SETTINGS      ###########
