@@ -6,10 +6,10 @@ import getpass
 
 def download_extract_copy(input_folder, mod_name):
     username = getpass.getuser()
-    directory_path = f"C:/Users/{username}/AppData/Roaming/AnyAspectRatio/perm/acnh"
+    directory_path = f"C:/Users/{username}/AppData/Roaming/AnyAspectRatio/perm/won"
 
     zip_urls = [
-        ("https://github.com/fayaz12g/aar-files/raw/main/acnh/horizons.zip", "horizons.zip")
+        ("https://github.com/fayaz12g/aar-files/raw/main/won/wonder.zip", "wonder.zip")
     ]
 
     # Check if the directory exists, create if it doesn't

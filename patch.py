@@ -8,14 +8,14 @@ def create_patch_files(patch_folder, ratio_value, scaling_factor, visual_fixes):
     scaling_factor = float(scaling_factor)
     ratio_value = float(ratio_value)
     print(f"The scaling factor is {scaling_factor}.")
-    hex_value1, hex_value2= acnh_hex23(ratio_value)
-    version_variables = ["2.0.6"]
+    hex_value1, hex_value2= won_hex23(ratio_value)
+    version_variables = ["1.0.1"]
     for version_variable in version_variables:
         file_name = f"main-{version_variable}.pchtxt"
         file_path = os.path.join(patch_folder, file_name)
 
-        if version_variable == "2.0.6":
-            nsobidid = "15765149DF53BA4105C75A3A1A5102FC"
+        if version_variable == "1.0.1":
+            nsobidid = "F91868B88F60D3D59009DB3389FDE314A6A32FCD"
             replace1 = "0045fd90"
             replace2 = "0045fd94"
             visual_fix = visual_fixesa
@@ -26,15 +26,12 @@ def create_patch_files(patch_folder, ratio_value, scaling_factor, visual_fixes):
 @flag offset_shift 0x100
 
 @enabled
-02c768e0 {hex_value1}
-02c768e4 {hex_value2}
-02c768e8 8003271e
-00ef5c40 e003271e
+029B5108 8ee31840
 @disabled
 
 {visual_fix}
 
-// Generated using acnh-aar by Fayaz (github.com/fayaz12g/acnh-aar)
+// Generated using won-aar by Fayaz (github.com/fayaz12g/won-aar)
 // Made possible by Fl4sh_#9174'''
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, 'w') as patch_file:

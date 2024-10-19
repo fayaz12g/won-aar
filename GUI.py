@@ -258,7 +258,7 @@ def select_mario_folder():
     ratio_value = (int(numerator_entry.get()) / int(denominator_entry.get()))
     scaling_factor = (16/9) / (int(numerator_entry.get()) / int(denominator_entry.get()))
     username = getpass.getuser()
-    gameid = "01006F8002326000"
+    gameid = "010015100B514000"
     if output_yuzu.get() is True:
         input_folder = f"C:/Users/{username}/AppData/Roaming/yuzu/load/{gameid}"
         process_name = "yuzu.exe"
@@ -333,21 +333,12 @@ def select_mario_folder():
                     decompress_zstd(file_path)
                     os.remove(file_path)
 
-        # Nin_NX_NVN Extraction
-        print("Extracting Nin_NX_NVN files.")
-        for root, _, files in os.walk(romfs_folder):
-            for file in files:
-                if file.lower().endswith(".nin_nx_nvn"):
-                    file_path = os.path.join(root, file)
-                    print(f"Extracting {file}.")
-                    extract_blarc(file_path)
-                    os.remove(file_path)
 
         #ARC Extraction
         print("Extracting ARC files.")
         for root, _, files in os.walk(romfs_folder):
             for file in files:
-                if file.lower().endswith(".arc"):
+                if file.lower().endswith(".blarc"):
                     file_path = os.path.join(root, file)
                     print(f"Extracting {file}.")
                     extract_blarc(file_path)
@@ -368,19 +359,17 @@ def select_mario_folder():
         for root, dirs, _ in os.walk(romfs_folder):
             if "blyt" in dirs:  # Check if the folder contains a "blyt" directory
                 parent_folder = os.path.dirname(root)
-                new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".arc")
+                new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".blarc")
                 pack_folder_to_blarc(root, new_blarc_file)  # Function to pack folder to .arc
                 shutil.rmtree(root)  # Remove the folder after packing
 
         print("Repacking new .Nin_NX_NVN.zs files. This step may take a while longer.")
         for root, _, files in os.walk(romfs_folder):
             for file in files:
-                if file.endswith(".arc"):  # Check if the folder contains an .arc file
+                if file.endswith(".blarc"):  # Check if the folder contains an .arc file
                     arc_file_path = os.path.join(root, file)
                     parent_folder = os.path.dirname(root)
-                    new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".Nin_NX_NVN")
-                    pack_folder_to_blarc(root, new_blarc_file)  # Pack to .Nin_NX_NVN
-                    os.remove(arc_file_path)  # Remove the .arc file root (should be root but getting access denied)
+                    new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".zs")
                     compress_zstd(new_blarc_file)
                     os.remove(new_blarc_file)  # Remove the .Nin_NX_NVN file after packing
 
@@ -587,7 +576,7 @@ notebook.add("Credits")
 
 credits_label = ClickableLabel(master=notebook.tab("Credits"), text=
                     ('Utility created by fayaz\n'
-                     'https://github.com/fayaz12g/acnh-aar\n'
+                     'https://github.com/fayaz12g/won-aar\n'
                      'ko-fi.com/fayaz12\n'
                      '\n\nWith thanks to\n'
                      'fruithapje21\n'
