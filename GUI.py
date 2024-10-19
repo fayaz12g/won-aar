@@ -360,18 +360,16 @@ def select_mario_folder():
             if "blyt" in dirs:  # Check if the folder contains a "blyt" directory
                 parent_folder = os.path.dirname(root)
                 new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".blarc")
-                pack_folder_to_blarc(root, new_blarc_file)  # Function to pack folder to .arc
+                pack_folder_to_blarc(root, new_blarc_file)  # Function to pack folder to .blarc
                 shutil.rmtree(root)  # Remove the folder after packing
 
         print("Repacking new .Nin_NX_NVN.zs files. This step may take a while longer.")
         for root, _, files in os.walk(romfs_folder):
             for file in files:
-                if file.endswith(".blarc"):  # Check if the folder contains an .arc file
-                    arc_file_path = os.path.join(root, file)
-                    parent_folder = os.path.dirname(root)
-                    new_blarc_file = os.path.join(parent_folder, os.path.basename(root) + ".zs")
-                    compress_zstd(new_blarc_file)
-                    os.remove(new_blarc_file)  # Remove the .Nin_NX_NVN file after packing
+                if file.endswith(".blarc"):  # Check if the folder contains a .blarc file
+                    blarc_file_path = os.path.join(root, file)
+                    compress_zstd(blarc_file_path)
+                    os.remove(blarc_file_path)  # Remove the .blarc file after packing
 
 
     ##########################

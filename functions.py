@@ -29,11 +29,15 @@ def won_hex23(num):
     full_hex = ''.join('{:02x}'.format(b) for b in packed)
     hex_1 = full_hex[:4]
     hex_2 = full_hex[4:]
-    asm_1 = f"mov w28, #0x4018{hex_1}0000"
-    asm_2 = f"movk w28, #0x{hex_2}"
-    hex_value1 = asm_to_hex(asm_1)
-    hex_value2 = asm_to_hex(asm_2)
-    return hex_value1, hex_value2
+    
+    new_hex_1 = hex_1[:2]
+    new_hex_2 = hex_1[2:]
+    new_hex_3 = hex_2[:2]
+    new_hex_4 = hex_2[2:]
+
+    hex_value = f"{new_hex_4}{new_hex_3}{new_hex_2}{new_hex_1}"
+
+    return hex_value
 
 def float2hex(f):
         return hex(struct.unpack('>I', struct.pack('<f', f))[0]).lstrip('0x').rjust(8,'0').upper()
