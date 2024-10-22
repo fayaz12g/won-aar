@@ -15,9 +15,6 @@ def make_hex(x, r):
     print(hex_value)
     return hex_value
 
-def hex2float(h):
-    return struct.unpack('<f', struct.pack('>I', int(h, 16)))[0]
-
 def asm_to_hex(asm_code):
     ks = Ks(KS_ARCH_ARM64, KS_MODE_LITTLE_ENDIAN)
     encoding, count = ks.asm(asm_code)
@@ -38,6 +35,9 @@ def won_hex23(num):
     hex_value = f"{new_hex_4}{new_hex_3}{new_hex_2}{new_hex_1}"
 
     return hex_value
+
+def hex2float(h):
+    return struct.unpack('<f', struct.pack('>I', int(h, 16)))[0]
 
 def float2hex(f):
         return hex(struct.unpack('>I', struct.pack('<f', f))[0]).lstrip('0x').rjust(8,'0').upper()
